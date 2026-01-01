@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+*.log
+
+# Virtual envs
+.venv/
+venv/
+ENV/
+env/
+
+# Build / dist
+build/
+dist/
+*.whl
+
+# Jupyter / IPython
+.ipynb_checkpoints/
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Data / outputs
+outputs/
+augmented/
+Task - Segmentation/
+Task - Segmentation/images/**/.ipynb_checkpoints
+Task - Segmentation/masks/**/.ipynb_checkpoints
+
+# Checkpoints and runs
+*.pt
+*.pth
+runs/
