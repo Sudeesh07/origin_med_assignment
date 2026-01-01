@@ -38,7 +38,15 @@ augmented/
 Task - Segmentation/
 Task - Segmentation/images/**/.ipynb_checkpoints
 Task - Segmentation/masks/**/.ipynb_checkpoints
-
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.tif
+*.ico
+*.webp
 # Checkpoints and runs
 *.pt
 *.pth
