@@ -48,6 +48,5 @@ Task - Segmentation/masks/**/.ipynb_checkpoints
 *.ico
 *.webp
 # Checkpoints and runs
-*.pt
-*.pth
+
 runs/
