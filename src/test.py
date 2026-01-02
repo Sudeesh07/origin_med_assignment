@@ -15,10 +15,10 @@ from utils.preprocess import denoise_image, apply_clahe
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Infer cranium mask and extract BPD/CFD points")
-    parser.add_argument("--weights", type=str, default=r"weights\unet_fetal_cranium_best.pt")
-    parser.add_argument("--model", type=str, default="unet", choices=["unet", "attention_unet"])
-    parser.add_argument("--images_dir", type=str, default="Task - Segmentation/images")
-    parser.add_argument("--output_dir", type=str, default="outputs")
+    parser.add_argument("--weights", type=str, default=r"/workspace/origin_med_assignment/weights/run_20260102_001846/best.pt")
+    parser.add_argument("--model", type=str, default="attention_unet", choices=["unet", "attention_unet"])
+    parser.add_argument("--images_dir", type=str, default=r"/workspace/origin_med_assignment/Task - Segmentation/images")
+    parser.add_argument("--output_dir", type=str, default="/workspace/outputs")
     parser.add_argument("--image_size", type=int, default=256)
     parser.add_argument("--threshold", type=float, default=0.5, help="Mask probability threshold")
     return parser.parse_args()

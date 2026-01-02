@@ -26,7 +26,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--epochs", type=int, default=30)
     parser.add_argument("--batch_size", type=int, default=4)
     parser.add_argument("--lr", type=float, default=1e-3)
-    parser.add_argument("--weight_decay", type=float, default=1e-5)
+    parser.add_argument("--weight_decay", type=float, default=1e-6)
     parser.add_argument("--val_split", type=float, default=0.15)
     parser.add_argument("--image_size", type=int, default=256)
     parser.add_argument("--num_workers", type=int, default=2)
@@ -52,14 +52,10 @@ def get_datasets(args: argparse.Namespace):
         p_flip=0.5,
         p_vflip=0.2,
         max_rot=10,
-        max_scale=0.05,
         p_speckle=0.4,
         speckle_std=0.025,
         p_blur=0.2,
         blur_kernel=3,
-        p_intensity=0.5,
-        brightness_delta=0.08,
-        contrast_delta=0.1,
     )
     clahe_fn = partial(apply_clahe, clip_limit=2.0, tile_grid_size=(8, 8))
     denoise_fn = partial(denoise_image, h=8)

@@ -87,14 +87,10 @@ def main():
         p_flip=0.5,
         p_vflip=0.2,
         max_rot=8.0,
-        max_scale=0.03,
         p_speckle=0.4,
         speckle_std=0.02,
         p_blur=0.2,
         blur_kernel=3,
-        p_intensity=0.5,
-        brightness_delta=0.08,
-        contrast_delta=0.1,
     )
 
     img_paths = sorted(images_dir.glob("*.png"))

@@ -43,14 +43,10 @@ def random_augment(
     p_flip: float = 0.5,
     p_vflip: float = 0.2,
     max_rot: float = 10.0,
-    max_scale: float = 0.05,
-    p_speckle: float = 0.3,
+    p_speckle: float = 0.0,
     speckle_std: float = 0.02,
-    p_blur: float = 0.2,
+    p_blur: float = 0.0,
     blur_kernel: int = 3,
-    p_intensity: float = 0.4,
-    brightness_delta: float = 0.08,
-    contrast_delta: float = 0.08,
 ) -> tuple[Image.Image, Image.Image]:
     """
     Apply paired augmentations (same params) to ultrasound image and mask.
@@ -64,22 +60,14 @@ def random_augment(
         img = TF.vflip(img)
         mask = TF.vflip(mask)
 
-    # Small random rotation + scale via affine
+    # Small random rotation via affine
     angle = random.uniform(-max_rot, max_rot)
-    scale = 1.0 + random.uniform(-max_scale, max_scale)
+    scale = 1.0
     shear = 0.0
     translate = (0, 0)
 
     img = TF.affine(img, angle=angle, translate=translate, scale=scale, shear=shear, interpolation=TF.InterpolationMode.BILINEAR, fill=0)
     mask = TF.affine(mask, angle=angle, translate=translate, scale=scale, shear=shear, interpolation=TF.InterpolationMode.NEAREST, fill=0)
-
-    # Ultrasound-specific intensity tweaks (image only)
-    if random.random() < p_intensity:
-        # brightness/contrast jitter within small bounds
-        b_factor = 1.0 + random.uniform(-brightness_delta, brightness_delta)
-        c_factor = 1.0 + random.uniform(-contrast_delta, contrast_delta)
-        img = TF.adjust_brightness(img, b_factor)
-        img = TF.adjust_contrast(img, c_factor)
 
     if random.random() < p_blur:
         k = max(3, blur_kernel | 1)  # ensure odd kernel
